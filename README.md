@@ -181,11 +181,33 @@ CLIENT APPLICATIONS
 
 ## 🧪 Qualidade & Testes
 
-- ✅ **71+ Testes** Unit + Integration passando
+- ✅ **70+ Testes** Unit + Integration passando
 - ✅ **PostgreSQL via Testcontainers** - Testes isolados e reproduzíveis
 - ✅ **FluentValidation** - Validação em múltiplas camadas (Commands, DTOs)
 - ✅ **Architecture Tests** - Garantia de Clean Architecture
 - ✅ **Code Analysis** - StyleCop e análise estática
+
+### Resultado dos Testes
+```
+✅ 37 Testes Unitários    - 31 ms
+✅ 33 Testes de Integração - 22 s
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   70 Testes Passando 100%
+```
+
+![Test Results](test-results.png)
+
+### Health Checks & Observabilidade
+```
+GET /health/ready → Healthy ✅  (Pronto para requisições)
+GET /health/live  → Healthy ✅  (Aplicação viva)
+
+Status: Operacional com todas as dependências ok
+Logging: Serilog com Structured Logging (TenantId, UserId, CorrelationId)
+Monitoring: Pronto para integração com Prometheus + Grafana
+```
+
+![Health Checks](healthy-check.png)
 
 ## 📦 Distribuição como NuGet
 
@@ -210,11 +232,38 @@ Este projeto demonstra competências fundamentais para desenvolvimento enterpris
 1. **Gestão de Complexidade** - Controle de estoque é problema complexo (reservas, transações, múltiplos armazéns)
 2. **Integrações Reais** - Integração com módulo de Identity, rastreamento de usuários
 3. **Dados Críticos** - Implementação de auditoria, histórico e reconciliação
-4. **Performance em Escala** - Cache Redis, índices no PostgreSQL, queries otimizadas
+4. **Performance em Escala** - Cache Redis, índices no PostgreSQL, queries otimizadas (52 MB → 15 KB)
 5. **Rastreabilidade Completa** - Cada movimento auditado, imutável, com timestamp
 6. **Multi-tenancy Real** - Isolamento via DB + RLS, não apenas filtros em código
 7. **Conformidade LGPD** - Anonimização, retenção de dados, direito ao esquecimento
 8. **Testes de Integração** - Validação com banco de dados real via Testcontainers
+
+### 🎯 Para Recrutadores
+
+Este projeto evidencia:
+
+**Qualidade de Código:**
+- ✅ 70+ testes automatizados (unit + integration)
+- ✅ Cobertura de testes em todas as camadas
+- ✅ TDD mindset com Testcontainers para testes realistas
+
+**Produção Ready:**
+- ✅ Health checks implementados (readiness + liveness)
+- ✅ Structured logging com correlação
+- ✅ Observabilidade nativa (pronto para Prometheus/Grafana)
+- ✅ Tratamento robusto de erros
+
+**Otimizações:**
+- ✅ Queries otimizadas (redução de 3.480x no payload)
+- ✅ AsNoTracking() para leitura
+- ✅ Paginação e lazy loading estratégico
+- ✅ Caching com Redis
+
+**Segurança:**
+- ✅ Multi-tenancy com isolamento real
+- ✅ Autenticação e autorização integradas
+- ✅ Validação em múltiplas camadas
+- ✅ Rastreamento completo de auditoria
 
 ## 🔄 Integração com Sysotto.Identity
 
